@@ -1,0 +1,18 @@
+import requests
+import json
+
+def jprint(obj):
+    text = json.dumps(obj, sort_keys=True, indent=4)
+    print(text)
+    
+url = "https://mashape-community-urban-dictionary.p.rapidapi.com/define"
+
+
+word = input("What do you want to Search \nInput: ")
+string = {"term":word}
+headers = {
+    'x-rapidapi-host': "mashape-community-urban-dictionary.p.rapidapi.com",
+    'x-rapidapi-key': "15e83809d5mshf5931d4bd78ea31p197a4bjsn2836b0463603"
+    }
+response = requests.request("GET", url, headers=headers, params=string)
+jprint(response.json())
